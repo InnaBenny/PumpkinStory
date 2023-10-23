@@ -15,3 +15,8 @@ void UStoryWidgetController::BroadcastInitialValues()
 {
 	
 }
+
+void UStoryWidgetController::BindCallbacksToDependencies()
+{
+	
+}

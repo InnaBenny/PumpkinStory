@@ -11,6 +11,7 @@ UOverlayWidgetController* AStoryHUD::GetOverlayWidgetController(const FWidgetCon
 	{
 		OverlayWidgetController == NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
+		OverlayWidgetController->BindCallbacksToDependencies();
 
 		return OverlayWidgetController;
 	}
