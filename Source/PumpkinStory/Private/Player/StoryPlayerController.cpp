@@ -25,8 +25,11 @@ void AStoryPlayerController::BeginPlay()
 	check(StoryContext);
 
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	check(Subsystem);
-	Subsystem->AddMappingContext(StoryContext, 0);
+	if (Subsystem)
+	{
+		Subsystem->AddMappingContext(StoryContext, 0);
+	}
+	
 
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Default;

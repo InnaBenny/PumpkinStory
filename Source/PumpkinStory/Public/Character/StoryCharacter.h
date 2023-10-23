@@ -15,5 +15,9 @@ class PUMPKINSTORY_API AStoryCharacter : public AStoryCharacterBase
 	GENERATED_BODY()
 public:
 	AStoryCharacter();
-
+	
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
+private:
+	void InitAbilityActorInfo();
 };

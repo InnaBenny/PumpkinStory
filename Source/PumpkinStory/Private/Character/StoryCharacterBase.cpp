@@ -9,6 +9,11 @@ AStoryCharacterBase::AStoryCharacterBase()
 
 }
 
+UAbilitySystemComponent* AStoryCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
 void AStoryCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
