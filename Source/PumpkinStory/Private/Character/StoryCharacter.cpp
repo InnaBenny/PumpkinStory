@@ -8,6 +8,7 @@
 #include "UI/HUD/StoryHUD.h"
 
 
+
 AStoryCharacter::AStoryCharacter()
 {
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -23,7 +24,7 @@ AStoryCharacter::AStoryCharacter()
 void AStoryCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
-	// Init ability actor info for the Seerver
+	// Init ability actor info for the Server
 	InitAbilityActorInfo();
 	
 }

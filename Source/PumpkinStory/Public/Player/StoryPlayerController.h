@@ -36,7 +36,9 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	void Move(const FInputActionValue& InputActionValue);
+/*
 	void CursorTrace();
 	INPCInterface* LastActor;
 	INPCInterface* ThisActor;
+	*/
 };

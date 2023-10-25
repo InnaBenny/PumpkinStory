@@ -15,7 +15,7 @@ AStoryPlayerController::AStoryPlayerController()
 void AStoryPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
-	CursorTrace();
+	//CursorTrace();
 	
 }
 
@@ -25,10 +25,9 @@ void AStoryPlayerController::BeginPlay()
 	check(StoryContext);
 
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	if (Subsystem)
-	{
+	check(Subsystem)
 		Subsystem->AddMappingContext(StoryContext, 0);
-	}
+	
 	
 
 	bShowMouseCursor = true;
@@ -62,7 +61,7 @@ void AStoryPlayerController::Move(const FInputActionValue& InputActionValue)
 		ControlledPawn->AddMovementInput(RightDirection, InputAxisVector.X);
 	}
 }
-
+/*
 void AStoryPlayerController::CursorTrace()
 {
 	FHitResult CursorHit;
@@ -85,7 +84,7 @@ void AStoryPlayerController::CursorTrace()
 	 *	E. Both actors are valid, and are the same actor
 	 *		- Do nothing.
 	 */
-
+/*
 	if (LastActor == nullptr)
 	{
 		if(ThisActor != nullptr)
@@ -120,3 +119,4 @@ void AStoryPlayerController::CursorTrace()
 			}
 		}
 }
+*/
