@@ -2,6 +2,7 @@
 
 
 #include "UI/HUD/StoryHUD.h"
+#include "UI/Widgets/StoryUserWidget.h"
 
 #include "UI/WidgetsController/OverlayWidgetController.h"
 
@@ -9,7 +10,7 @@ UOverlayWidgetController* AStoryHUD::GetOverlayWidgetController(const FWidgetCon
 {
 	if (OverlayWidgetController == nullptr)
 	{
-		OverlayWidgetController == NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
+		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 		OverlayWidgetController->BindCallbacksToDependencies();
 
@@ -21,7 +22,7 @@ UOverlayWidgetController* AStoryHUD::GetOverlayWidgetController(const FWidgetCon
 void AStoryHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
 {
 	checkf(OverlayWidgetClass, TEXT("Overlay Widget Class uninitialized, please fill out BP_StoryHUD"))
-	checkf(OverlayWidgetControllerClass, TEXT("Overlay Widget Class uninitialized, please fill out BP_StoryHUD"))
+	checkf(OverlayWidgetControllerClass, TEXT("Overlay Widget Controller Class uninitialized, please fill out BP_StoryHUD"))
 	
 	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), OverlayWidgetClass);
 	OverlayWidget = Cast<UStoryUserWidget>(Widget);

@@ -6,6 +6,8 @@
 #include "Player/StoryPlayerController.h"
 #include "Player/StoryPlayerState.h"
 #include "UI/HUD/StoryHUD.h"
+#include "AbilitySystemComponent.h"
+
 
 
 

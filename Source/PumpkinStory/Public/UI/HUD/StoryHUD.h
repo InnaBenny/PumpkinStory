@@ -9,9 +9,11 @@
 
 class UAttributeSet;
 class UAbilitySystemComponent;
-struct FWidgetControllerParams;
+class UStoryUserWidget;
 class UOverlayWidgetController;
 struct FWidgetControllerParams;
+
+
 /**
  * 
  */
@@ -20,7 +22,7 @@ class PUMPKINSTORY_API AStoryHUD : public AHUD
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	TObjectPtr<UStoryUserWidget> OverlayWidget;
 
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
@@ -32,7 +34,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UStoryUserWidget> OverlayWidgetClass;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	TObjectPtr<UOverlayWidgetController> OverlayWidgetController;
 
 	UPROPERTY(EditAnywhere)

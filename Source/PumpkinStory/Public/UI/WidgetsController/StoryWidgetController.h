@@ -9,7 +9,11 @@
 
 class UAttributeSet;
 class UAbilitySystemComponent;
-
+class AStoryPlayerController;
+class AStoryPlayerState;
+class UStoryAbilitySystemComponent;
+class UStoryAttributeSet;
+class UAbilityInfo;
 
 
 USTRUCT(BlueprintType)
