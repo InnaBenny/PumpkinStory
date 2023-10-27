@@ -4,10 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Components/SphereComponent.h"
+#include "GameplayEffectTypes.h"
 #include "StoryEffectActor.generated.h"
 
+class UAbilitySystemComponent;
+struct FActiveGameplayEffectHandle;
 class UGameplayEffect;
+
 
 UENUM (BlueprintType)
 enum class EEffectApplicationPolicy
@@ -24,13 +27,13 @@ enum class EEffectRemovalPolicy
 	DoNotRemove
 };
 
+
 UCLASS()
 class PUMPKINSTORY_API AStoryEffectActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:
-	
 	AStoryEffectActor();
 	
 protected:
@@ -68,4 +71,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Applied Effects")
 	EEffectRemovalPolicy InfiniteEffectRemovalPolicy = EEffectRemovalPolicy::RemoveOnEndOverlap;
+
+	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 };
