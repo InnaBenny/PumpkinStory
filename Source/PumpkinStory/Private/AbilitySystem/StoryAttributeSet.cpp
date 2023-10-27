@@ -2,6 +2,11 @@
 
 
 #include "AbilitySystem/StoryAttributeSet.h"
+
+#include "GameplayEffectExtension.h"
+#include "Character/StoryCharacter.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "Net/UnrealNetwork.h"
 
 UStoryAttributeSet::UStoryAttributeSet()
@@ -30,6 +35,25 @@ void UStoryAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute,
 	{
 		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxHealth());
 	}
+}
+
+void UStoryAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
+{
+	Super::PostGameplayEffectExecute(Data);
+	
+	
+	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
+	{
+	Cast<AStoryCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0))->Health = GetHealthAttribute().GetNumericValue(this);
+
+		if(Health.GetBaseValue()<=0.f)
+		{
+			UAbilitySystemComponent* ASC = GetOwningAbilitySystemComponent();
+			ASC->SetNumericAttributeBase(GetHealthAttribute(), 50.f);
+		}
+	}
+	
+	
 }
 
 void UStoryAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
